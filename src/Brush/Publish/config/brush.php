@@ -3,21 +3,36 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Brush General Properties
+    | Size Properties
     |--------------------------------------------------------------------------
     | 
-    | 
+    | Size properties to change your image's size.
     | 
     */
-    'put_watermark' => false,
-    'watermark_path' => public_path('images/watermark.png'),
     'do_resize' => true,
-    'alpha' => 0.8,
-    'reduce_rate' => 50,
     'size_ratio' => 0.5,
+
     /*
-    'width' => 800,
-    'height' => 'auto',
+    |--------------------------------------------------------------------------
+    | Watermark Properties
+    |--------------------------------------------------------------------------
+    | 
+    | Watermark properties to add watermark to your image.
+    | 
     */
+    'put_watermark' => true,
+    'watermark_path' => public_path('images/watermark.png'),
+    //'alpha' => 0.8,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Quality Properties
+    |--------------------------------------------------------------------------
+    | 
+    | Quality properties to change your file size.
+    | 
+    */
+    'change_quality' => true,
+    'quality' => 50,
 
 ];
