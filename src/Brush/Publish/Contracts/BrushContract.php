@@ -25,10 +25,11 @@ interface BrushContract{
 	 * Resize the image.
 	 * 
 	 * @param  gdImage $image 
+	 * @param  string $fileName 
 	 * 
 	 * @return void
 	 */
-	public static function resize($image);
+	public static function resize($image, $fileName);
 
 	/**
 	 * Change quality of the image.
