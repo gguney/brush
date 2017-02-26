@@ -15,7 +15,7 @@ class Brush implements BrushContract{
 	public static function make($path){
 	    $fileName = $path;
 	    $image = imagecreatefromjpeg($fileName);
-		self::resize($image);
+		self::resize($image, $fileName);
 	    self::mark($tmpImage);
 	    self::putHeader();
 	    self::changeQuality($tmpImage, $fileName);
@@ -47,7 +47,7 @@ class Brush implements BrushContract{
 	 * 
 	 * @return void
 	 */
-	public static function resize($image)
+	public static function resize($image, $fileName)
 	{
 		list($width, $height) = getimagesize($fileName);
 	   	if(config('brush.do_resize')){
