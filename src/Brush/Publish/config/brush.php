@@ -10,7 +10,7 @@ return [
     | 
     */
     'do_resize' => true,
-    'size_ratio' => 0.5,
+    'size_ratio' => 0.2,
 
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +33,6 @@ return [
     | 
     */
     'change_quality' => true,
-    'quality' => 50,
+    'quality' => 20,
 
 ];
