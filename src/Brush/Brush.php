@@ -30,11 +30,17 @@ class Brush implements BrushContract{
 				break;
 		}
 	}
-	public function brush()
+
+	/**
+	 * 
+	 * 
+	 * @return void
+	 */
+	public function clear()
 	{
-		$this->putHeader();
 		imagedestroy($this->tmpImage);
 	}
+
 	/**
 	 * Make an image with given config.
 	 * 
@@ -44,12 +50,6 @@ class Brush implements BrushContract{
 	 */
 	public static function make($path){
 	    return new Brush($path);
-	    /*
-		$tmpImage = self::resize($image);
-	    $tmpImage = self::mark($tmpImage);
-	    $tmpImage = self::changeQuality($tmpImage);
-	    imagedestroy($tmpImage);
-	    **/
 	}
 
 	/**
@@ -97,6 +97,7 @@ class Brush implements BrushContract{
 	 */
 	public function changeQuality()
 	{
+		$this->putHeader();
 		if(config('brush.change_quality'))
 	    	imagejpeg($this->tmpImage, $this->fileName, config('brush.quality'));
 	    else
@@ -114,6 +115,7 @@ class Brush implements BrushContract{
 		header("Content-type: ".$this->type); 
 	}
 
+
     public function __call($method, $args)
     {
         return call_user_func_array(
@@ -122,8 +124,7 @@ class Brush implements BrushContract{
                 );
     }
 
-    /**  PHP 5.3.0 ve sonrası  */
-    public function __callStatic($method, $args)
+    public static function __callStatic($method, $args)
     {
         return call_user_func_array(
                     array(get_called_class(), $method),

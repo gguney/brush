@@ -8,7 +8,7 @@ interface BrushContract{
 	/**
 	 * @return void
 	 */
-	public function brush();
+	public function clear();
 
 	/**
 	 * Make an image with given config.
@@ -25,6 +25,7 @@ interface BrushContract{
 	 * 
 	 * @return Brush
 	 */
+	
 	public function mark();
 
 
@@ -55,5 +56,5 @@ interface BrushContract{
     public function __call($method, $args);
 
     /**  PHP 5.3.0 ve sonrası  */
-    public function __callStatic($method, $args);
+    public static function __callStatic($method, $args);
 }
