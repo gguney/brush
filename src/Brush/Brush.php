@@ -57,17 +57,32 @@ class Brush implements BrushContract{
 	 * 
 	 * @return void
 	 */
-	public function mark()
-	{
-		if(config('brush.put_watermark'))
-	    {
-			$watermark = imagecreatefrompng((config('brush.watermark_path')));
-			$watermarkWidth = imagesx($watermark);
-			$watermarkHeight = imagesy($watermark);
-			imagecopy($this->tmpImage, $watermark, 0, 0, 0, 0, $watermarkWidth, $watermarkHeight);
-    		return $this;
-		}
-	}
+    public function mark()
+    {
+        if (config('brush.put_watermark')) {
+            $watermark = imagecreatefrompng((config('brush.watermark_path')));
+            $watermarkWidth = imagesx($watermark);
+            $watermarkHeight = imagesy($watermark);
+
+            $tmpX = imagesx($this->tmpImage) - 100;
+            $watermarkRatio = $watermarkHeight / $watermarkWidth;
+            //$tmpY = imagesy($this->tmpImage);
+            $tmpY = $watermarkRatio * $tmpX;
+            $yLocation = (imagesy($this->tmpImage) - $tmpY) / 2;
+            $tmpWatermark = imagecreatetruecolor($tmpX, $tmpY);
+            imagealphablending($tmpWatermark, false);
+            imagesavealpha($tmpWatermark, true);
+            $transparent = imagecolorallocatealpha($tmpWatermark, 255, 255, 255, 127);
+            imagefilledrectangle($tmpWatermark, 0, 0, $tmpX, $tmpY, $transparent);
+            imagecopyresampled($tmpWatermark, $watermark, 0, 0, 0, 0, $tmpX, $tmpY, $watermarkWidth, $watermarkHeight);
+            imagecopy($this->tmpImage, $tmpWatermark, 50, $yLocation, 0, 0, $tmpX, $tmpY);
+            imagedestroy($tmpWatermark);
+
+            return $this;
+        } else {
+            return $this;
+        }
+    }
 
 	/**
 	 * Resize the image.
