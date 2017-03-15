@@ -1,5 +1,5 @@
 <?php 
-namespace Brush;
+namespace GGuney\Brush;
 
 class Image{
 	protected $width;

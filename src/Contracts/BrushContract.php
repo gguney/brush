@@ -1,5 +1,5 @@
-<?php 
-namespace Brush\Contracts;
+<?php
+namespace GGuney\Brush\Contracts;
 
 interface BrushContract{
 

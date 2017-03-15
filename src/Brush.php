@@ -1,7 +1,7 @@
 <?php
-namespace Brush;
+namespace GGuney\Brush;
 
-use Brush\Contracts\BrushContract;
+use GGuney\Brush\Contracts\BrushContract;
 
 class Brush implements BrushContract
 {

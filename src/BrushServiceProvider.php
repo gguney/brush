@@ -1,5 +1,5 @@
 <?php
-namespace Brush;
+namespace GGuney\Brush;
 use Illuminate\Support\ServiceProvider;
 class BrushServiceProvider extends ServiceProvider
 {
