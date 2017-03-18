@@ -17,7 +17,7 @@ Add package's service provider to your config/app.php
 
 ```php
 ...
-        Brush\BrushServiceProvider::class,
+        GGuney\Brush\BrushServiceProvider::class,
 ...
 ```
 
