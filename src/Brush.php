@@ -119,13 +119,13 @@ class Brush implements BrushContract
      *
      * @return void
      */
-    public function changeQuality($quality = config('brush.quality'))
+    public function changeQuality($quality)
     {
         $this->putHeader();
-        if (config('brush.change_quality')) {
+        if($quality != null){
             imagejpeg($this->tmpImage, $this->fileName, $quality);
-        } else {
-            imagejpeg($this->tmpImage, $this->fileName, 100);
+        }else if (config('brush.change_quality')) {
+            imagejpeg($this->tmpImage, $this->fileName, config('brush.quality'));
         }
         return $this;
     }

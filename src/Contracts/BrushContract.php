@@ -42,7 +42,7 @@ interface BrushContract{
 	 * 
 	 * @return Brush
 	 */
-	public function changeQuality();
+	public function changeQuality($quality);
 
 
 	/**
