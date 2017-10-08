@@ -23,6 +23,13 @@
         "psr-4": {
             "GGuney\\Brush\\": "src/"
         }
+    },
+    "extra":{
+        "laravel":{
+            "providers": [
+                "GGuney\\Brush\\BrushServiceProvider"
+            ]
+        }
     }
 }
 
