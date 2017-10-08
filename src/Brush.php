@@ -37,6 +37,8 @@ class Brush implements BrushContract
                 throw new Exception("Image type is not supported", 1);
                 break;
         }
+        $this->tmpImage = imagecreatetruecolor($this->width , $this->height);
+        imagecopyresized($this->tmpImage, $this->image, 0, 0, 0, 0, $this->width , $this->height, $this->width, $this->height);
     }
 
     /**
@@ -117,11 +119,11 @@ class Brush implements BrushContract
      *
      * @return void
      */
-    public function changeQuality()
+    public function changeQuality($quality = config('brush.quality'))
     {
         $this->putHeader();
         if (config('brush.change_quality')) {
-            imagejpeg($this->tmpImage, $this->fileName, config('brush.quality'));
+            imagejpeg($this->tmpImage, $this->fileName, $quality);
         } else {
             imagejpeg($this->tmpImage, $this->fileName, 100);
         }
